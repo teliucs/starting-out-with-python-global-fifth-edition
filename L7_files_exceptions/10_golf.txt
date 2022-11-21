@@ -1,0 +1,12 @@
+Week #1:
+- Lorenzo	23.0
+- Martina	12.0
+Week #2:
+- Lorenzo	43.0
+- Martina	21.0
+Week #3:
+- Lorenzo	34.0
+- Martina	21.0
+Week #4:
+- Lorenzo	24.0
+- Martina	21.0
