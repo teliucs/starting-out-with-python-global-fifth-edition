@@ -6,28 +6,15 @@
 
 
 def main():
-    text_file, num_list = read_file()
-    print(text_file)
-    print(f"The avarage number of words per sentence is: {compute_avarage(text_file, num_list):,.1f}.")
+    pass
 
 
 def read_file():
-    with open('Esercizi/L8_more_strings/6_text.txt', 'r') as f:
-        list = f.readlines()
-        for i, _ in enumerate(f):
-            pass
-        for i in range(len(list)):
-            list[i] = list[i].rstrip('\n')
-    return list, i+1
+    pass
 
 
-def compute_avarage(list, num):
-    total_words = num
-    for i in range(len(list)):
-        for j in range(len(list[i])):
-            if list[i][j] == ' ':
-                total_words += 1
-    return total_words / num
+def compute_avarage(list):
+    pass
 
 
 if __name__ == '__main__':
