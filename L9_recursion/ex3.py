@@ -10,8 +10,9 @@ def main():
 
 def print_previous(num):
     if num > 0:
-        print(num)
+        
         print_previous(num - 2)
+        print(num)
         
 
 if __name__ == '__main__':

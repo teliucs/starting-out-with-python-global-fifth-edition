@@ -11,9 +11,10 @@ def main():
 
 def print_asterisks(num):
     ASTERISKS = '*'
+    print(num)
     if num > 0:
         print_asterisks(num - 1)
-        print(ASTERISKS * num)
+        
 
 
 if __name__ == '__main__':
