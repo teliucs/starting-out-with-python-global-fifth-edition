@@ -20,42 +20,6 @@
 # • Display the 10 most overdue numbers (numbers that haven’t been drawn in a long 
 # time), ordered from most overdue to least overdue
 # • Display the frequency of each number 1–69, and the frequency of each Powerball 
-# number 1–26
-
-
-# 5 numbers 1-69
-# 1 powerball number 1-26
-##import random
-##
-##def lottery():
-##    numbers = []
-##    powerballs = []
-##    for i in range(5):
-##        number = (str(random.randint(1,69)))
-##        if len(number) == 1:
-##            number = '0' + number
-##        numbers.append(number)
-##    powerball = (str(random.randint(1,26)))
-##    if len(powerball) == 1:
-##        powerball = '0' + powerball
-##    powerballs.append(powerball)
-##    winning_numbers_list = numbers + powerballs
-##    winning_numbers = ''
-##    for number in winning_numbers_list:
-##        winning_numbers += number + ' '
-##    winning_numbers = winning_numbers.rstrip()
-##    print(winning_numbers)
-##    return winning_numbers
-##
-##def main():
-##    outfile = open('pbnumbers.txt','w')
-##    for i in range(1,655):
-##        line = lottery()
-##        print(line)
-##        outfile.write(line + '\n')
-##    outfile.close()
-##main()
-
 
 
 def unified_list(number_list):
@@ -64,6 +28,7 @@ def unified_list(number_list):
         draw_list = draw.split()
         master_list += draw_list
     return master_list, draw_list
+
 
 def times_each_appears(a_list):
     counter = 0
@@ -87,6 +52,7 @@ def times_each_appears(a_list):
             numbersfound.append(number)
             timesfound.append(counter)
     return numbersfound,timesfound
+
     
 def top10common(times,numbers):
     counter = 0
@@ -111,6 +77,7 @@ def top10common(times,numbers):
     for index in range(len(top10numbers)):
         print(top10numbers[index] + '\t--->\t' + str(top10times[index]))
     print()
+    
 
 def bottom10common(times,numbers):
     counter = 0
@@ -134,6 +101,7 @@ def bottom10common(times,numbers):
     for index in range(len(bottom10numbers)):
         print(bottom10numbers[index] + '\t--->\t' + str(bottom10times[index]))
     print()
+    
 
 def top10overdue(times,numbers,original_list):
     count = 0
@@ -165,6 +133,7 @@ def top10overdue(times,numbers,original_list):
     for index in range(len(top10overdue)):
         print(top10overdue[index] + '\t--->\t' + str(top10notseenfor[index]))
     print()
+    
 
 def seperate_frequency(a_list):
     powerballs = []
@@ -211,13 +180,12 @@ def seperate_frequency(a_list):
     for index in range(len(non_powerballs)):
         print(str(non_powerballs[index]) + '\t--->\t' + str(non_powerballs_count[index]))
 
+
 def main():
     infile = open('pbnumbers.txt', 'r')
     
-    # Read the file and create a list.
     contents = infile.readlines()
     
-    # Strip the '\n' from the end of the elements
     for index in range(len(contents)):
         contents[index] = contents[index].rstrip('\n')
     master_list,split_list = unified_list(contents)

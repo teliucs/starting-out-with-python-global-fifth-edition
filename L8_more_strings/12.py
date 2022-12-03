@@ -11,14 +11,16 @@ def main():
     word = input("Type here a sentence words are run together, but the first character of each word is uppercase:\n")
     print("Pig Latining the word...")
     time.sleep(2.5)
-    print(pig_latin(word))
+    print(pig_latin(word.upper()))
 
 
 def pig_latin(s):
-    new = ''
     list_word = s.split()
-    for i in range(len(list)):
-        list[i] = list[:]
+    for i, word in enumerate(list_word):
+        for _, _ in enumerate(list_word):
+            list_word[i] = word[1:] + word[0] + "AY"
+    
+    return ' '.join(list_word)
     
 
 
