@@ -13,12 +13,24 @@
 def main():
     sentence = input('Type here a sentence:\n')
     integer = int(input("Integer: "))
+    print(trasform_ceaser(sentence, integer))
 
 
-def trasform_ceaser(string, n):
-    dictionary = ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'. 'O',
+def trasform_ceaser(s, n):
+    caeser = ''
+    dictionary = ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
                 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z')
-
+    for i in range(len(s)):
+        if s[i].upper() in dictionary:
+            index = dictionary.index(s[i].upper()) + n
+            if index <= 25:
+                caeser += dictionary[index]
+            else:
+                divisor = index // 26
+                caeser += dictionary[index - (26 * divisor)]
+        else:
+            caeser += s[i]           
+    return caeser    
 
 if __name__ == '__main__':
     main()
