@@ -23,10 +23,13 @@
 # You can write one program to perform all of these calculations, or you can write di#erent
 # programs, one for each calculation.
 
+import matplotlib.pyplot as plt
 
 def main():
     date_list, price_lists = read_file()
-    average_price_per_year(date_list, price_lists)
+    average_year_years, average_year_prices = average_price_per_year(date_list, price_lists)
+    average_price_per_month(date_list, price_lists)
+    show_graph(average_year_years, average_year_prices)
 
 
 def read_file():
@@ -46,8 +49,7 @@ def average_price_per_year(dates, prices):
     accumulator = 0
     average_year_years = []
     average_year_prices = []
-    # for every date in the date list
-    # do the following
+    # for every date in the date list do the following
     for index in range(len(dates)):
         # Set the first year.
         if year == '':
@@ -76,7 +78,51 @@ def average_price_per_year(dates, prices):
     print('----\t\t-----')
     for i in range(len(average_year_years)):
         print(f"{average_year_years[i]}\t--->\t{average_year_prices[i]:,.3f}")
+    return average_year_years, average_year_prices
 
+
+def average_price_per_month(dates,prices):
+    month = ''
+    year = ''
+    counter = 0
+    accumulator = 0
+    average_price_months = []
+    average_price_prices = []
+
+    for index in range(len(dates)):
+        if year == '':
+            year = dates[index][6:10]
+        elif month == '':
+            month = dates[index][0:2]
+        elif dates[index][0:2] == month and dates[index][6:10] == year:
+            accumulator += float(prices[index])
+            counter += 1
+        else:
+            average = accumulator / counter
+            average_price_months.append(year + '-' + month)
+            average_price_prices.append(average)
+            counter = 1
+            accumulator = float(prices[index])
+            year = dates[index][6:10]
+            month = dates[index][0:2]
+    print()
+    print('Average Price Per Month')
+    print('-----------------------')
+    print('Month\t\tPrice')
+    print('-----\t\t-----')
+    for index in range(len(average_price_months)):
+        print(average_price_months[index],'----->\t',format(average_price_prices[index],',.3f'))
+
+
+def show_graph(years, prices):
+    """I have added a graph to show the change of price during the year"""
+    plt.plot(years, prices, marker = 'o')
+    plt.title('Gas price by Year')
+    plt.xlabel('Year')
+    plt.ylabel('Price')
+    plt.grid(True)
+    plt.show()
+    
 
 if __name__ == '__main__':
     main()
