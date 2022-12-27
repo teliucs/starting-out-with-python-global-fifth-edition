@@ -8,7 +8,6 @@ def main():
     freq, most_freq_char, max_frenq = get_most_frequent(string)
     
     print(f"The most frquency character of '{string}' is '{most_freq_char}' with [{max_frenq}].")            
-    #Displays the each character and their corresponding frequency
     for i in range(0, len(freq)):
         if(string[i] != ' ' and string[i] != '0'):
             print(f"[{string[i]}] ---> {freq[i]}")
@@ -23,7 +22,6 @@ def get_most_frequent(string):
         for j in range(i+1, len(string)):
             if(string[i] == string[j]):
                 freq[i] = freq[i] + 1
-                #Set string[j] to 0 to avoid printing visited character  
                 string = string[ : j] + '0' + string[j+1 : ]
         if freq[i] > max_frenq:
             max_frenq = freq[i]

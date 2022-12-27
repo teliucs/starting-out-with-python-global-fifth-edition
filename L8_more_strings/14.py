@@ -49,21 +49,14 @@ def average_price_per_year(dates, prices):
     accumulator = 0
     average_year_years = []
     average_year_prices = []
-    # for every date in the date list do the following
     for index in range(len(dates)):
-        # Set the first year.
         if year == '':
             year = dates[index][6:10]
             accumulator += float(prices[index])
             counter += 1
-        # Continue with the rest dates.
-            # if we are still in the same year then
         elif dates[index][6:10] == year:
-                # add the price to the accumulator
                 accumulator += float(prices[index])
                 counter += 1
-            # if the year changed, caclculate the average for the year
-            # and continue with the next year.
         else:
             average = accumulator / counter
             average_year_years.append(year)
@@ -81,7 +74,7 @@ def average_price_per_year(dates, prices):
     return average_year_years, average_year_prices
 
 
-def average_price_per_month(dates,prices):
+def average_price_per_month(dates, prices):
     month = ''
     year = ''
     counter = 0
@@ -115,7 +108,7 @@ def average_price_per_month(dates,prices):
 
 
 def show_graph(years, prices):
-    """I have added a graph to show the change of price during the year"""
+    """I have added a graph to show the change of price during the years"""
     plt.plot(years, prices, marker = 'o')
     plt.title('Gas price by Year')
     plt.xlabel('Year')
