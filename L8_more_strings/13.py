@@ -24,6 +24,7 @@
 
 def unified_list(number_list):
     master_list = []
+    draw_list = []
     for draw in number_list:
         draw_list = draw.split()
         master_list += draw_list
@@ -35,38 +36,26 @@ def times_each_appears(a_list):
     numbersfound = []
     timesfound = []
     
-    # Iterate each number in the list.
     for number in a_list:
         if number not in numbersfound:
-            # Setup a counter to check how many times a number is seen.
             counter = 0
-        
-            # Check how many times the number is in this list.
             for searchnumber in a_list:
-            
-                # If the number is found, add + 1 to the counter.
                 if number == searchnumber:
                     counter += 1
-       
         if number not in numbersfound:
             numbersfound.append(number)
             timesfound.append(counter)
-    return numbersfound,timesfound
+    return numbersfound, timesfound
 
     
-def top10common(times,numbers):
-    counter = 0
+def top10common(times, numbers):
     index = 0
     top10times= []
     top10numbers = []
-    for count in range(10):
-        # Find the index number of the number that appears the most times.
+    for _ in range(10):
         index = (times.index(max(times)))
-        # Add this number to the list top10numbers
         top10numbers.append(numbers[index])
-        # Add the number of times it was found to top10times
         top10times.append(times[index])
-        # remove the number from the searchlist
         del numbers[index]
         del times[index]
     print('Most Common Numbers')
@@ -79,19 +68,14 @@ def top10common(times,numbers):
     print()
     
 
-def bottom10common(times,numbers):
-    counter = 0
+def bottom10common(times, numbers):
     index = 0
     bottom10times = []
     bottom10numbers = []
-    for count in range(10):
-        # Find the index of the number that appear the least times.
+    for _ in range(10):
         index = times.index(min(times))
-        # Add this number to the bottom10numbers
         bottom10numbers.append(numbers[index])
-        # Add the number of times it was found to the bottom10times list
         bottom10times.append(times[index])
-        # remove the number from the lists times and numbers.
         del numbers[index]
         del times[index]
     print('Least Common Numbers')
@@ -103,7 +87,7 @@ def bottom10common(times,numbers):
     print()
     
 
-def top10overdue(times,numbers,original_list):
+def top10overdue(numbers):
     count = 0
     overdue_list = []
     not_seen_list = []
@@ -144,7 +128,6 @@ def seperate_frequency(a_list):
     number = 0
     for count in range(1,27):
         number = count
-        # Split the list into draws
         for draw in a_list:
             draw_list = draw.split()
             if int(draw_list[5]) == number:
@@ -182,18 +165,18 @@ def seperate_frequency(a_list):
 
 
 def main():
-    infile = open('pbnumbers.txt', 'r')
+    infile = open('L8_more_strings\\13_power_ball.txt', 'r')
     
     contents = infile.readlines()
     
     for index in range(len(contents)):
         contents[index] = contents[index].rstrip('\n')
-    master_list,split_list = unified_list(contents)
-    numbersfound,timesfound = times_each_appears(master_list)
+    master_list, split_list = unified_list(contents)
+    numbersfound, timesfound = times_each_appears(master_list)
     
     top10common(timesfound,numbersfound)
     bottom10common(timesfound,numbersfound)
-    top10overdue(timesfound,numbersfound,master_list)
+    top10overdue(numbersfound)
     seperate_frequency(contents)
     infile.close()
 
