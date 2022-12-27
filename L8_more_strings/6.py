@@ -6,15 +6,18 @@
 
 
 def main():
-    pass
+    print(f"The average number of words per sentence is [{read_file():.0f}].")
 
 
 def read_file():
-    pass
-
-
-def compute_avarage(list):
-    pass
+    total = 0
+    lines = 0
+    with open("L8_more_strings\\6_text.txt", 'r') as f:
+        for line in f:
+            words = line.split()
+            total += len(words)
+            lines += 1
+    return total / lines
 
 
 if __name__ == '__main__':
