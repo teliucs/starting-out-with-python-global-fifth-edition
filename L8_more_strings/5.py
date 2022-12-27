@@ -18,14 +18,9 @@
     
 
 def main():
-    number = get_number().upper()
+    number = input("Enter the number which you would like to convert.\n(format XXX-XXX-XXXX)\n").upper()
     convert(number)
-
-
-def get_number():
-    num = input("Enter the number which you would like to convert.\n(format XXX-XXX-XXXX)\n")
-    return num
-
+     
 
 def convert(phone):
     alpha  = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", \
