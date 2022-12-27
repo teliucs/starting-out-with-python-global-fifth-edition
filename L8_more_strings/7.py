@@ -12,15 +12,15 @@ def main():
     upper, lower, digit, white_space = analize_data(text_file)
     print("Analizing data....")
     print('--------------------')
-    print(f"Number of UPPER: {upper}")
-    print(f"Number of LOWER: {lower}")
-    print(f"Number of DIGITS: {digit}")
-    print(f"Number of WHITE SPACES: {white_space}")
+    print(f"Number of UPPER: [{upper}]")
+    print(f"Number of LOWER: [{lower}]")
+    print(f"Number of DIGITS: [{digit}]")
+    print(f"Number of WHITE SPACES: [{white_space}]")
 
 
 def get_data():
     try:
-        with open('Esercizi/L8_more_strings/6_text.txt', 'r') as f:
+        with open('L8_more_strings/6_text.txt', 'r') as f:
             list = f.readlines()
             for i in range(len(list)):
                 list[i] = list[i].rstrip('\n')
@@ -42,7 +42,7 @@ def analize_data(list):
                 lower += 1
             if list[i][j].isdigit():
                 digit += 1
-            if list[i][j] == ' ':
+            if list[i][j].isspace():
                 white_space += 1
     return upper, lower, digit, white_space
             
